@@ -16,4 +16,5 @@ backend/data/sentinel.db-*
 backend/logs/*.log
 
 # Docker
+docker-compose.yml
 *.pid
