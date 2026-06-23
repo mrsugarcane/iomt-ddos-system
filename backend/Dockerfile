@@ -12,7 +12,7 @@ COPY data ./data
 
 # Create a non-root user and writable dirs it needs
 RUN addgroup -S sentinel && adduser -S sentinel -G sentinel \
-    && mkdir -p /app/logs /app/db_data \
+    && mkdir -p /app/logs /app/data \
     && chown -R sentinel:sentinel /app
 
 USER sentinel
