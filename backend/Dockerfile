@@ -19,7 +19,7 @@ USER sentinel
 
 ENV NODE_ENV=production
 ENV PORT=4000
-ENV DB_PATH=/app/db_data/sentinel.db
+ENV DB_PATH=/app/data/sentinel.db
 
 EXPOSE 4000
 
