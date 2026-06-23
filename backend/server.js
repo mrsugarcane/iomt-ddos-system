@@ -59,12 +59,15 @@ app.use((req, _res, next) => {
   next();
 });
 
-app.use(cors({
+const corsOptions = {
   origin:      (origin, cb) => cb(null, !origin || ALLOWED_ORIGINS.includes(origin)),
   credentials: true,
   methods:     ["GET","POST","DELETE","OPTIONS"],
   allowedHeaders: ["Content-Type","Authorization"],
-}));
+};
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
+
 app.use(securityHeaders);
 app.use(rateLimiter(120, 60_000));   // 120 req/min/IP global
 app.use(requestLogger);
@@ -185,7 +188,6 @@ function tick() {
 setInterval(tick, 900);
 
 // SSE endpoint — requires a valid JWT in query param or Authorization header
-// (browsers can't set custom headers on EventSource, so we accept ?token=)
 app.get("/api/stream", (req, res) => {
   const token = req.query.token
     || (req.headers["authorization"] || "").replace("Bearer ", "");
@@ -196,14 +198,13 @@ app.get("/api/stream", (req, res) => {
     "Content-Type":  "text/event-stream",
     "Cache-Control": "no-cache",
     "Connection":    "keep-alive",
-    "X-Accel-Buffering": "no",     // disable Nginx buffering for SSE
+    "X-Accel-Buffering": "no",
   });
   res.write(": connected\n\n");
 
   const client = { res, userId: payload.sub };
   sseClients.add(client);
 
-  // Heartbeat every 25s to prevent proxy timeouts
   const heartbeat = setInterval(() => {
     try { res.write(": ping\n\n"); } catch { clearInterval(heartbeat); }
   }, 25_000);
