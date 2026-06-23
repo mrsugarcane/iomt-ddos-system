@@ -1,0 +1,19 @@
+node_modules/
+dist/
+.env
+.DS_Store
+
+ml-pipeline/data/flows.csv
+ml-pipeline/data/processed.npz
+ml-pipeline/data/test_flows_raw.csv
+ml-pipeline/data/dataset_summary.json
+__pycache__/
+*.pyc
+
+# Runtime data — created fresh by the app, never ship a real DB or logs
+backend/data/sentinel.db
+backend/data/sentinel.db-*
+backend/logs/*.log
+
+# Docker
+*.pid

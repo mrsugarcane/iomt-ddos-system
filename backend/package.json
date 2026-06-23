@@ -1,0 +1,21 @@
+{
+  "name": "iomt-ddos-backend",
+  "version": "1.0.0",
+  "description": "Production API + live SSE feed for the IoMT DDoS prediction dashboard",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --env-file=.env server.js",
+    "dev": "node --env-file=.env server.js",
+    "test": "node --test",
+    "test:isolated": "sh run-tests.sh",
+    "pm2:start": "pm2 start ecosystem.config.js --env production",
+    "pm2:stop": "pm2 stop sentinel-backend"
+  },
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}

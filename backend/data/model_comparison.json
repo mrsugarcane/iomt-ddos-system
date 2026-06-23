@@ -1,0 +1,184 @@
+{
+  "dataset_summary": {
+    "n_flows": 215133,
+    "n_attack_flows": 61761,
+    "attack_fraction": 0.28708287431495866,
+    "device_types": {
+      "ecg_wearable": 152479,
+      "glucose_sensor": 24020,
+      "pacemaker": 19623,
+      "infusion_pump": 19011
+    },
+    "attack_type_counts": {
+      "0": 153372,
+      "1": 30082,
+      "2": 25439,
+      "3": 6240
+    },
+    "n_sequence_windows": 128553,
+    "window_size": 10,
+    "feature_columns": [
+      "duration",
+      "total_packets",
+      "total_bytes",
+      "packet_rate",
+      "byte_rate",
+      "mean_packet_size",
+      "protocol_code",
+      "syn_count",
+      "fin_count",
+      "device_type_code",
+      "inter_arrival",
+      "inter_arrival_roll_std"
+    ]
+  },
+  "models": [
+    {
+      "name": "CNN",
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "roc_auc": 1.0,
+      "inference_latency_ms": 0.1433415012434125,
+      "model_size_kb": 35.81640625,
+      "n_params": 9169,
+      "n_test_samples": 50148,
+      "n_test_attacks": 14397
+    },
+    {
+      "name": "Random Forest (baseline)",
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "roc_auc": 1.0,
+      "inference_latency_ms": 49.16928849881515,
+      "model_size_kb": 75.751953125,
+      "n_params": null,
+      "n_test_samples": 50148,
+      "n_test_attacks": 14397
+    },
+    {
+      "name": "LSTM",
+      "accuracy": 0.9999766633217427,
+      "precision": 1.0,
+      "recall": 0.9999190414507773,
+      "f1_score": 0.9999595190867506,
+      "roc_auc": 0.9999999973455344,
+      "inference_latency_ms": 1.0117155010811985,
+      "model_size_kb": 26.75390625,
+      "n_params": 6849,
+      "n_test_samples": 42851,
+      "n_test_attacks": 12352
+    },
+    {
+      "name": "Logistic Regression (baseline)",
+      "accuracy": 0.9998404722022812,
+      "precision": 1.0,
+      "recall": 0.999444328679586,
+      "f1_score": 0.9997220871256861,
+      "roc_auc": 0.9999998465146628,
+      "inference_latency_ms": 0.29849200043827295,
+      "model_size_kb": 0.7451171875,
+      "n_params": null,
+      "n_test_samples": 50148,
+      "n_test_attacks": 14397
+    },
+    {
+      "name": "Hybrid CNN-LSTM",
+      "accuracy": 0.999789969895685,
+      "precision": 0.999352698438385,
+      "recall": 0.9999190414507773,
+      "f1_score": 0.9996357897292704,
+      "roc_auc": 0.9999999362928234,
+      "inference_latency_ms": 0.8193624997511506,
+      "model_size_kb": 31.06640625,
+      "n_params": 7953,
+      "n_test_samples": 42851,
+      "n_test_attacks": 12352
+    },
+    {
+      "name": "Autoencoder",
+      "accuracy": 0.9648640025524448,
+      "precision": 0.8909585989232007,
+      "recall": 1.0,
+      "f1_score": 0.9423353842125932,
+      "roc_auc": 1.0,
+      "inference_latency_ms": 0.07705449825152755,
+      "model_size_kb": 5.328125,
+      "n_params": 1364,
+      "n_test_samples": 50148,
+      "n_test_attacks": 14397
+    }
+  ],
+  "best_model": "CNN",
+  "optimization": {
+    "model_name": "CNN",
+    "sparsity_target": 0.3,
+    "params_pruned": 2752,
+    "params_total": 9169,
+    "baseline_size_kb": 35.81640625,
+    "optimized_size_kb": 6.2666015625,
+    "size_reduction_pct": 82.50354455229578,
+    "baseline_f1": 1.0,
+    "optimized_f1": 1.0,
+    "baseline_latency_ms": 0.137491999194026,
+    "optimized_latency_ms": 0.1408219989389181
+  },
+  "explainability": {
+    "method": "permutation_importance (F1 drop when feature is shuffled)",
+    "baseline_f1": 1.0,
+    "ranking": [
+      {
+        "feature": "duration",
+        "importance": 0.24149
+      },
+      {
+        "feature": "packet_rate",
+        "importance": 0.21427
+      },
+      {
+        "feature": "total_packets",
+        "importance": 0.14103
+      },
+      {
+        "feature": "syn_count",
+        "importance": 0.10061
+      },
+      {
+        "feature": "total_bytes",
+        "importance": 0.09326
+      },
+      {
+        "feature": "fin_count",
+        "importance": 0.01748
+      },
+      {
+        "feature": "byte_rate",
+        "importance": 0.00232
+      },
+      {
+        "feature": "protocol_code",
+        "importance": 0.00213
+      },
+      {
+        "feature": "inter_arrival",
+        "importance": 1e-05
+      },
+      {
+        "feature": "mean_packet_size",
+        "importance": 1e-05
+      },
+      {
+        "feature": "device_type_code",
+        "importance": 0.0
+      },
+      {
+        "feature": "inter_arrival_roll_std",
+        "importance": 0.0
+      }
+    ]
+  },
+  "generated_at": "2026-06-20T21:37:31Z"
+}
