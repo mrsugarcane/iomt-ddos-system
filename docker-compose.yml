@@ -9,7 +9,7 @@ services:
       NODE_ENV: production
       PORT: 4000
       JWT_SECRET: ${JWT_SECRET:?Set JWT_SECRET in .env before starting}
-      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-http://localhost:5173,http://localhost:8080}
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-http://localhost:5173,http://localhost:8080,render.com}
       DB_PATH: /app/db_data/sentinel.db
     volumes:
       - db_data:/app/db_data
