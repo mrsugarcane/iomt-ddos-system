@@ -4,7 +4,7 @@
   "description": "Production API + live SSE feed for the IoMT DDoS prediction dashboard",
   "main": "server.js",
   "scripts": {
-    "start": "node --env-file=.env server.js",
+    "start": "node server.js",
     "dev": "node --env-file=.env server.js",
     "test": "node --test",
     "test:isolated": "sh run-tests.sh",
