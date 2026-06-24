@@ -67,19 +67,23 @@ export default function Sidebar() {
           {connected ? "LIVE FEED CONNECTED" : "FEED OFFLINE"}
         </div>
         {user && (
-          <div className="flex items-center justify-between">
-            <NavLink to="/account" className="overflow-hidden hover:opacity-80">
-              <div className="font-body text-xs text-ink-primary truncate">{user.email}</div>
-              <div className="font-mono text-[10px] text-ink-faint uppercase">{user.role}</div>
-            </NavLink>
-            <button
-              onClick={handleLogout}
-              className="font-mono text-[10px] text-ink-muted hover:text-alert shrink-0 ml-2"
-            >
-              logout
-               <div className="font-body text-xs text-ink-primary truncate">Developed by J DEV</div>
-            </button>
-          </div>
+          <>
+            <div className="flex items-center justify-between">
+              <NavLink to="/account" className="overflow-hidden hover:opacity-80">
+                <div className="font-body text-xs text-ink-primary truncate">{user.email}</div>
+                <div className="font-mono text-[10px] text-ink-faint uppercase">{user.role}</div>
+              </NavLink>
+              <button
+                onClick={handleLogout}
+                className="font-mono text-[10px] text-ink-muted hover:text-alert shrink-0 ml-2"
+              >
+                logout
+              </button>
+            </div>
+            <div className="flex items-center justify-between">
+              <div className="font-body text-xs text-ink-primary truncate">Developed by J DEV</div>
+            </div>
+          </>
         )}
       </div>
     </aside>
