@@ -26,7 +26,7 @@ export default function Home() {
           IoMT NETWORK SECURITY
         </div>
         <h1 className="font-display text-5xl leading-[1.08] text-ink-primary max-w-2xl">
-          Predicting DDoS attacks on medical devices, before the alarm a clinician depends on goes silent.
+         Detecting and preventing DDoS attacks on medical devices to ensure uninterrupted patient monitoring.
         </h1>
         <p className="font-body text-ink-muted text-lg max-w-xl mt-6 leading-relaxed">
           A pacemaker, an infusion pump, a bedside monitor — each one is also a network endpoint.
