@@ -77,6 +77,7 @@ export default function Sidebar() {
               className="font-mono text-[10px] text-ink-muted hover:text-alert shrink-0 ml-2"
             >
               logout
+               <div className="font-body text-xs text-ink-primary truncate">Developed by J DEV</div>
             </button>
           </div>
         )}
